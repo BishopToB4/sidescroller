@@ -28,6 +28,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+ 
+      - name: Install Godot export templates
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates
+          wget https://downloads.tuxfamily.org/godotengine/4.4.1/Godot_v4.4.1-stable_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/4.4.1.stable
+          unzip Godot_v4.4.1-stable_export_templates.tpz -d ~/.local/share/godot/export_templates/4.4.1.stable
 
       - name: Create staging directory
         run: mkdir -v -p build/web
